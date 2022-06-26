@@ -5,7 +5,7 @@
 >Ainda me lembro da primeira vez que comi um hamburguer. Quando voltei pra casa, não queria saber de outra coisa. Com pizza de camarão é pau a pau.
 
 ![Rei do Hamburguer](https://c.tenor.com/OtCg9d-26U0AAAAC/burger-king-dab.gif)
->_O autointitulado: "O Rei do Hamburguer"_
+>_Autointitulado: "O Rei do Hamburguer"_
 
 
 **CURIOSIDADES:** [Sou Criador de Conteúdo](https://linktr.ee/mestreryu)
