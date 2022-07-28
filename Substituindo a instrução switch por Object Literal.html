@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/ -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Substituindo a instrução switch por Object Literal</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/app.css" as="style">
+    <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/manifest.js.baixados" as="script">
+    <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/content-api.min.js.baixados" as="script">
+    <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/vendor.js.baixados" as="script">
+    <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/app.js.baixados" as="script">
+
+      <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/post.css" as="style">
+  <link rel="preload" href="./Substituindo a instrução switch por Object Literal_files/post.js.baixados" as="script">
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=568a4d1e52") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=568a4d1e52") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=568a4d1e52") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=568a4d1e52") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=568a4d1e52") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=568a4d1e52") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=568a4d1e52");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3#iefix?v=568a4d1e52") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=568a4d1e52") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=568a4d1e52") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3#icomoon?v=568a4d1e52") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./Substituindo a instrução switch por Object Literal_files/app.css" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="./Substituindo a instrução switch por Object Literal_files/post.css" media="screen">
+
+
+    
+
+    <meta name="description" content="☕ Nesse post vamos analisar porque Object Literal é um bom substituto do switch. Comparando a mesma funcionalidade, com um código usando switch e outro com object literals. Confere aí 🚀">
+    <link rel="icon" href="https://blog.rocketseat.com.br/favicon.png" type="image/png">
+    <link rel="canonical" href="https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/amp/">
+    
+    <meta property="og:site_name" content="Blog da Rocketseat">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Substituindo a instrução switch por Object Literal">
+    <meta property="og:description" content="☕ Nesse post vamos analisar porque Object Literal é um bom substituto do switch. Comparando a mesma funcionalidade, com um código usando switch e outro com object literals. Confere aí 🚀">
+    <meta property="og:url" content="https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/">
+    <meta property="og:image" content="https://blog.rocketseat.com.br/content/images/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png">
+    <meta property="article:published_time" content="2020-09-16T21:01:30.000Z">
+    <meta property="article:modified_time" content="2020-10-19T17:46:46.000Z">
+    <meta property="article:tag" content="javascript">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/rocketseat">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Substituindo a instrução switch por Object Literal">
+    <meta name="twitter:description" content="☕ Nesse post vamos analisar porque Object Literal é um bom substituto do switch. Comparando a mesma funcionalidade, com um código usando switch e outro com object literals. Confere aí 🚀">
+    <meta name="twitter:url" content="https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/">
+    <meta name="twitter:image" content="https://blog.rocketseat.com.br/content/images/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Thiago Marinho">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="javascript">
+    <meta name="twitter:site" content="@rocketseat">
+    <meta name="twitter:creator" content="@tgmarinho">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    
+    <script type="text/javascript" async="" src="./Substituindo a instrução switch por Object Literal_files/analytics.js.baixados"></script><script type="text/javascript" async="" src="./Substituindo a instrução switch por Object Literal_files/f.txt"></script><script src="./Substituindo a instrução switch por Object Literal_files/458929838438421" async=""></script><script src="./Substituindo a instrução switch por Object Literal_files/512526249721864" async=""></script><script src="./Substituindo a instrução switch por Object Literal_files/227628427740337" async=""></script><script async="" src="./Substituindo a instrução switch por Object Literal_files/fbevents.js.baixados"></script><script async="" src="./Substituindo a instrução switch por Object Literal_files/gtm.js.baixados"></script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Blog da Rocketseat",
+        "url": "https://blog.rocketseat.com.br/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.rocketseat.com.br/content/images/2021/12/Blog_logo_reduzido.svg"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Thiago Marinho",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.rocketseat.com.br/content/images/2021/03/profile-pic--4-.png",
+            "width": 500,
+            "height": 500
+        },
+        "url": "https://blog.rocketseat.com.br/author/thiago-marinho/",
+        "sameAs": [
+            "https://tgmarinho.com",
+            "https://twitter.com/tgmarinho"
+        ]
+    },
+    "headline": "Substituindo a instrução switch por Object Literal",
+    "url": "https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/",
+    "datePublished": "2020-09-16T21:01:30.000Z",
+    "dateModified": "2020-10-19T17:46:46.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.rocketseat.com.br/content/images/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png",
+        "width": 1920,
+        "height": 1080
+    },
+    "keywords": "javascript",
+    "description": "👋 Introdução\nObject Literal\n[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer] \né um bom substituto da instrução procedural switch\n[https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/switch]\n. O switch apresenta alguns problemas — o design do código é bem antigo e\nprocedural; dificulta encontrar um possível bug e podemos esquecer de colocar a\ninstrução break; no final de cada case, permitindo passar por cada um sem\nnecessid",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.rocketseat.com.br/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.27">
+    <link rel="alternate" type="application/rss+xml" title="Blog da Rocketseat" href="https://blog.rocketseat.com.br/rss/">
+    <script defer="" src="./Substituindo a instrução switch por Object Literal_files/portal.min.js.baixados" data-ghost="https://blog.rocketseat.com.br/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer="" src="./Substituindo a instrução switch por Object Literal_files/cards.min.js.baixados"></script>
+    <link rel="stylesheet" type="text/css" href="./Substituindo a instrução switch por Object Literal_files/cards.min.css">
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K9TJ6T4');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '227628427740337');
+  fbq('init', '512526249721864');
+  fbq('init', '458929838438421');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=227628427740337&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<link rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"><style>:root {--ghost-accent-color: #15171A;}</style>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://blog.rocketseat.com.br"
+      // @license-end
+    </script>
+
+  <style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */</style><style type="text/css">.tippy-tooltip[data-animation=fade][data-state=hidden]{opacity:0}.tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{pointer-events:none;max-width:calc(100vw - 10px);transition-timing-function:cubic-bezier(.165,.84,.44,1);transition-property:transform}.tippy-tooltip{position:relative;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;background-color:#333;transition-property:visibility,opacity,transform;outline:0}.tippy-tooltip[data-placement^=top]>.tippy-arrow{border-width:8px 8px 0;border-top-color:#333;margin:0 3px;transform-origin:50% 0;bottom:-7px}.tippy-tooltip[data-placement^=bottom]>.tippy-arrow{border-width:0 8px 8px;border-bottom-color:#333;margin:0 3px;transform-origin:50% 7px;top:-7px}.tippy-tooltip[data-placement^=left]>.tippy-arrow{border-width:8px 0 8px 8px;border-left-color:#333;margin:3px 0;transform-origin:0 50%;right:-7px}.tippy-tooltip[data-placement^=right]>.tippy-arrow{border-width:8px 8px 8px 0;border-right-color:#333;margin:3px 0;transform-origin:7px 50%;left:-7px}.tippy-tooltip[data-interactive][data-state=visible]{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{position:absolute;border-color:transparent;border-style:solid}.tippy-content{padding:5px 9px}</style><style type="text/css">@font-face{font-family:swiper-icons;src:url("data:application/font-woff;charset=utf-8;base64, d09GRgABAAAAAAZgABAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAGRAAAABoAAAAci6qHkUdERUYAAAWgAAAAIwAAACQAYABXR1BPUwAABhQAAAAuAAAANuAY7+xHU1VCAAAFxAAAAFAAAABm2fPczU9TLzIAAAHcAAAASgAAAGBP9V5RY21hcAAAAkQAAACIAAABYt6F0cBjdnQgAAACzAAAAAQAAAAEABEBRGdhc3AAAAWYAAAACAAAAAj//wADZ2x5ZgAAAywAAADMAAAD2MHtryVoZWFkAAABbAAAADAAAAA2E2+eoWhoZWEAAAGcAAAAHwAAACQC9gDzaG10eAAAAigAAAAZAAAArgJkABFsb2NhAAAC0AAAAFoAAABaFQAUGG1heHAAAAG8AAAAHwAAACAAcABAbmFtZQAAA/gAAAE5AAACXvFdBwlwb3N0AAAFNAAAAGIAAACE5s74hXjaY2BkYGAAYpf5Hu/j+W2+MnAzMYDAzaX6QjD6/4//Bxj5GA8AuRwMYGkAPywL13jaY2BkYGA88P8Agx4j+/8fQDYfA1AEBWgDAIB2BOoAeNpjYGRgYNBh4GdgYgABEMnIABJzYNADCQAACWgAsQB42mNgYfzCOIGBlYGB0YcxjYGBwR1Kf2WQZGhhYGBiYGVmgAFGBiQQkOaawtDAoMBQxXjg/wEGPcYDDA4wNUA2CCgwsAAAO4EL6gAAeNpj2M0gyAACqxgGNWBkZ2D4/wMA+xkDdgAAAHjaY2BgYGaAYBkGRgYQiAHyGMF8FgYHIM3DwMHABGQrMOgyWDLEM1T9/w8UBfEMgLzE////P/5//f/V/xv+r4eaAAeMbAxwIUYmIMHEgKYAYjUcsDAwsLKxc3BycfPw8jEQA/gZBASFhEVExcQlJKWkZWTl5BUUlZRVVNXUNTQZBgMAAMR+E+gAEQFEAAAAKgAqACoANAA+AEgAUgBcAGYAcAB6AIQAjgCYAKIArAC2AMAAygDUAN4A6ADyAPwBBgEQARoBJAEuATgBQgFMAVYBYAFqAXQBfgGIAZIBnAGmAbIBzgHsAAB42u2NMQ6CUAyGW568x9AneYYgm4MJbhKFaExIOAVX8ApewSt4Bic4AfeAid3VOBixDxfPYEza5O+Xfi04YADggiUIULCuEJK8VhO4bSvpdnktHI5QCYtdi2sl8ZnXaHlqUrNKzdKcT8cjlq+rwZSvIVczNiezsfnP/uznmfPFBNODM2K7MTQ45YEAZqGP81AmGGcF3iPqOop0r1SPTaTbVkfUe4HXj97wYE+yNwWYxwWu4v1ugWHgo3S1XdZEVqWM7ET0cfnLGxWfkgR42o2PvWrDMBSFj/IHLaF0zKjRgdiVMwScNRAoWUoH78Y2icB/yIY09An6AH2Bdu/UB+yxopYshQiEvnvu0dURgDt8QeC8PDw7Fpji3fEA4z/PEJ6YOB5hKh4dj3EvXhxPqH/SKUY3rJ7srZ4FZnh1PMAtPhwP6fl2PMJMPDgeQ4rY8YT6Gzao0eAEA409DuggmTnFnOcSCiEiLMgxCiTI6Cq5DZUd3Qmp10vO0LaLTd2cjN4fOumlc7lUYbSQcZFkutRG7g6JKZKy0RmdLY680CDnEJ+UMkpFFe1RN7nxdVpXrC4aTtnaurOnYercZg2YVmLN/d/gczfEimrE/fs/bOuq29Zmn8tloORaXgZgGa78yO9/cnXm2BpaGvq25Dv9S4E9+5SIc9PqupJKhYFSSl47+Qcr1mYNAAAAeNptw0cKwkAAAMDZJA8Q7OUJvkLsPfZ6zFVERPy8qHh2YER+3i/BP83vIBLLySsoKimrqKqpa2hp6+jq6RsYGhmbmJqZSy0sraxtbO3sHRydnEMU4uR6yx7JJXveP7WrDycAAAAAAAH//wACeNpjYGRgYOABYhkgZgJCZgZNBkYGLQZtIJsFLMYAAAw3ALgAeNolizEKgDAQBCchRbC2sFER0YD6qVQiBCv/H9ezGI6Z5XBAw8CBK/m5iQQVauVbXLnOrMZv2oLdKFa8Pjuru2hJzGabmOSLzNMzvutpB3N42mNgZGBg4GKQYzBhYMxJLMlj4GBgAYow/P/PAJJhLM6sSoWKfWCAAwDAjgbRAAB42mNgYGBkAIIbCZo5IPrmUn0hGA0AO8EFTQAA");font-weight:400;font-style:normal}:root{--swiper-theme-color:#007aff}.swiper{margin-left:auto;margin-right:auto;position:relative;overflow:hidden;list-style:none;padding:0;z-index:1}.swiper-vertical>.swiper-wrapper{flex-direction:column}.swiper-wrapper{position:relative;width:100%;height:100%;z-index:1;display:flex;transition-property:transform;box-sizing:content-box}.swiper-android .swiper-slide,.swiper-wrapper{transform:translateZ(0)}.swiper-pointer-events{touch-action:pan-y}.swiper-pointer-events.swiper-vertical{touch-action:pan-x}.swiper-slide{flex-shrink:0;width:100%;height:100%;position:relative;transition-property:transform}.swiper-slide-invisible-blank{visibility:hidden}.swiper-autoheight,.swiper-autoheight .swiper-slide{height:auto}.swiper-autoheight .swiper-wrapper{align-items:flex-start;transition-property:transform,height}.swiper-backface-hidden .swiper-slide{transform:translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}.swiper-3d,.swiper-3d.swiper-css-mode .swiper-wrapper{perspective:1200px}.swiper-3d .swiper-cube-shadow,.swiper-3d .swiper-slide,.swiper-3d .swiper-slide-shadow,.swiper-3d .swiper-slide-shadow-bottom,.swiper-3d .swiper-slide-shadow-left,.swiper-3d .swiper-slide-shadow-right,.swiper-3d .swiper-slide-shadow-top,.swiper-3d .swiper-wrapper{transform-style:preserve-3d}.swiper-3d .swiper-slide-shadow,.swiper-3d .swiper-slide-shadow-bottom,.swiper-3d .swiper-slide-shadow-left,.swiper-3d .swiper-slide-shadow-right,.swiper-3d .swiper-slide-shadow-top{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:10}.swiper-3d .swiper-slide-shadow{background:rgba(0,0,0,.15)}.swiper-3d .swiper-slide-shadow-left{background-image:linear-gradient(270deg,rgba(0,0,0,.5),transparent)}.swiper-3d .swiper-slide-shadow-right{background-image:linear-gradient(90deg,rgba(0,0,0,.5),transparent)}.swiper-3d .swiper-slide-shadow-top{background-image:linear-gradient(0deg,rgba(0,0,0,.5),transparent)}.swiper-3d .swiper-slide-shadow-bottom{background-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent)}.swiper-css-mode>.swiper-wrapper{overflow:auto;scrollbar-width:none;-ms-overflow-style:none}.swiper-css-mode>.swiper-wrapper::-webkit-scrollbar{display:none}.swiper-css-mode>.swiper-wrapper>.swiper-slide{scroll-snap-align:start start}.swiper-horizontal.swiper-css-mode>.swiper-wrapper{-ms-scroll-snap-type:x mandatory;scroll-snap-type:x mandatory}.swiper-vertical.swiper-css-mode>.swiper-wrapper{-ms-scroll-snap-type:y mandatory;scroll-snap-type:y mandatory}.swiper-centered>.swiper-wrapper:before{content:"";flex-shrink:0;order:9999}.swiper-centered.swiper-horizontal>.swiper-wrapper>.swiper-slide:first-child{-webkit-margin-start:var(--swiper-centered-offset-before);margin-inline-start:var(--swiper-centered-offset-before)}.swiper-centered.swiper-horizontal>.swiper-wrapper:before{height:100%;min-height:1px;width:var(--swiper-centered-offset-after)}.swiper-centered.swiper-vertical>.swiper-wrapper>.swiper-slide:first-child{-webkit-margin-before:var(--swiper-centered-offset-before);margin-block-start:var(--swiper-centered-offset-before)}.swiper-centered.swiper-vertical>.swiper-wrapper:before{width:100%;min-width:1px;height:var(--swiper-centered-offset-after)}.swiper-centered>.swiper-wrapper>.swiper-slide{scroll-snap-align:center center}</style><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style><meta http-equiv="origin-trial" content="A9wkrvp9y21k30U9lU7MJMjBj4USjLrGwV+Z8zO3J3ZBH139DOnCv3XLK2Ii40S94HG1SZ/Zeg2GSHOD3wlWngYAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjYxMjk5MTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script type="text/javascript" async="" src="./Substituindo a instrução switch por Object Literal_files/f(1).txt"></script><script type="text/javascript" async="" src="./Substituindo a instrução switch por Object Literal_files/f(2).txt"></script><script type="text/javascript" async="" src="./Substituindo a instrução switch por Object Literal_files/f(3).txt"></script><script type="text/javascript" async="" src="./Substituindo a instrução switch por Object Literal_files/f(4).txt"></script></head>
+  <body class="post-template tag-javascript" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+    
+
+
+
+  
+<header class="m-header with-picture js-header headroom headroom--not-bottom headroom--not-top headroom--unpinned">
+  <div class="m-mobile-topbar aos-init aos-animate" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Abrir menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://blog.rocketseat.com.br/" class="m-logo in-mobile-topbar">
+        <img src="./Substituindo a instrução switch por Object Literal_files/Blog_logo_reduzido.svg" alt="Blog da Rocketseat" class="">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Abrir pesquisa" style="visibility: hidden;">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Fechar menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main aos-init aos-animate" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Menu principal">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://blog.rocketseat.com.br/" class="m-logo">
+                    <img src="./Substituindo a instrução switch por Object Literal_files/Blog_logo_reduzido.svg" alt="Blog da Rocketseat" class="">
+                  </a>
+                </li>
+                
+    <li class="nav-back-end">
+      <a href="https://blog.rocketseat.com.br/tag/back-end/">Back-end</a>
+    </li>
+    <li class="nav-front-end">
+      <a href="https://blog.rocketseat.com.br/tag/front-end/">Front-end</a>
+    </li>
+    <li class="nav-mobile">
+      <a href="https://blog.rocketseat.com.br/tag/mobile/">Mobile</a>
+    </li>
+    <li class="nav-carreira">
+      <a href="https://blog.rocketseat.com.br/tag/carreira/">Carreira</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Abrir submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Artigos recentes</h3>
+                          <div class="swiper js-recent-slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
+                            <div class="swiper-wrapper" id="swiper-wrapper-ef4bb85c9310bda4b" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4">
+                                  <a href="https://blog.rocketseat.com.br/boas-praticas-para-devs-em-inicio-de-carreira/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="./Substituindo a instrução switch por Object Literal_files/Boas_praticas_para_devs_em_inicio_de_carreira.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Boas práticas para devs em início de carreira" style="">
+                                      Boas práticas para devs em início de carreira
+                                    </h3>
+                                    <span class="m-recent-article__date">há 2 meses</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4">
+                                  <a href="https://blog.rocketseat.com.br/comunidade-guia-pratico-de-como-contribuir-para-o-ecossistema-de-tecnologia/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="./Substituindo a instrução switch por Object Literal_files/blog-rocketseat-guia_pratico_de_como_contribuir_em_comunidade.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Comunidade: guia prático de como contribuir para o ecossistema de tecnologia" style="">
+                                      Comunidade: guia prático de como contribuir para o<span class="js-shave-char">…</span><span class="js-shave" style="display: none;"> ecossistema de tecnologia
+                                    </span></h3>
+                                    <span class="m-recent-article__date">há 2 meses</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide" role="group" aria-label="3 / 4">
+                                  <a href="https://blog.rocketseat.com.br/o-que-e-next-level-week/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="./Substituindo a instrução switch por Object Literal_files/nlw-next-level-week-blog-rocketseat.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Next Level Week: os caminhos que trilhamos até aqui" style="">
+                                      Next Level Week: os caminhos que trilhamos<span class="js-shave-char">…</span><span class="js-shave" style="display: none;"> até aqui
+                                    </span></h3>
+                                    <span class="m-recent-article__date">há 3 meses</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide" role="group" aria-label="4 / 4">
+                                  <a href="https://blog.rocketseat.com.br/prisma-uma-das-melhores-coisa-que-ja-aconteceu-no-ecossistema/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="./Substituindo a instrução switch por Object Literal_files/prisma-rocketseat-blog.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Prisma: uma das melhores coisas que já aconteceu no ecossistema?" style="">
+                                      Prisma: uma das melhores coisas que já aconteceu no<span class="js-shave-char">…</span><span class="js-shave" style="display: none;"> ecossistema?
+                                    </span></h3>
+                                    <span class="m-recent-article__date">há 4 meses</span>
+                                  </a>
+                                </div>
+                            </div>
+                          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Marcadores</h3>
+                        <ul>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/acessibilidade/">acessibilidade</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/adonisjs/">AdonisJS</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/android/">android</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/animacao/">Animação</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/api/">api</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/api-rest/">API REST</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/apollo/">Apollo</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/arquitetura/">Arquitetura</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/back-end/">Back End</a>
+                            </li>
+                            <li>
+                              <a href="https://blog.rocketseat.com.br/tag/back-end-2/">Back-end</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Abrir pesquisa" style="visibility: hidden;">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Alternar modo escuro" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Alternar modo escuro
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture aos-init aos-animate" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img srcset="
+          /content/images/size/w300/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png 300w,
+          /content/images/size/w600/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png 600w,
+          /content/images/size/w1000/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png 1000w,
+          /content/images/size/w2000/2020/09/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png 2000w
+        " sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px" src="./Substituindo a instrução switch por Object Literal_files/substituindo-a-instrucao-switch-por-object-literal-rocketseat-1.png" alt="">
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post js-aos-wrapper aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+          <div class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Substituindo a instrução switch por Object Literal</h1>
+              <div class="m-heading__meta">
+                  <a href="https://blog.rocketseat.com.br/tag/javascript/" class="m-heading__meta__tag">javascript</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">•</span>
+                <span class="m-heading__meta__time">16 de Set de 2020</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Substituindo%20a%20instru%C3%A7%C3%A3o%20switch%20por%20Object%20Literal&amp;url=https://blog.rocketseat.com.br/substituindo-a-instrucao-switch-por-object-literal/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Role para o topo">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true" viewBox="0 0 50 50" style="opacity: 1;">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="23" stroke-width="3" cx="25" cy="25" style="stroke-dasharray: 157.08, 157.08; stroke-dashoffset: 139.801;"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h3 id="-introdu-o">👋 Introdução</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">Object Literal</a> é um bom substituto da instrução procedural <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/switch">switch</a>. O switch apresenta alguns problemas — o <em>design</em> do código é bem antigo e procedural; dificulta encontrar um possível <em>bug</em> e podemos esquecer de colocar a instrução <code>break;</code> no final de cada <code>case</code>, permitindo passar por cada um sem necessidade; por último o código com <code>switch</code> fica um pouco mais verboso.</p><p>Então, a ideia é utilizar objetos literais (<em>object literals</em>) ao invés do velho <strong>switch.</strong></p><p>Vamos ver um exemplo de código comparando os dois e você poderá tirar suas próprias conclusões.</p><p>Abaixo temos a mesma funcionalidade implementada com <code>switch</code> e com <code>object literals</code>:</p><h3 id="-switch">❌ Switch</h3><p>A instrução <a href="https://www.w3schools.com/js/js_switch.asp">switch</a> é usada para executar ações diferentes de acordo com a entrada, ou seja, é uma estrutura condicional.</p><p>No código abaixo, temos um <strong>switch</strong> que irá atribuir na variável <code>day</code> um número inteiro que corresponde o dia da semana da data atual que está sendo obtido através da instrução: <code>new Date().getDay()</code>.</p><figure class="kg-card kg-code-card"><pre class=" language-jsx"><code class=" language-jsx"><span class="token keyword">let</span> day<span class="token punctuation">;</span>
+
+<span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Sunday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Monday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Tuesday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Wednesday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Thursday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">5</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Friday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">6</span><span class="token operator">:</span>
+    day <span class="token operator">=</span> <span class="token string">"Saturday"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">default</span><span class="token operator">:</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Hey! We have only 7 days in the week"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">What day of the week is today? </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>day<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Resultado para o dia 16/09/2020:</span>
+<span class="token comment">// What day of the week is today? Wednesday</span>
+</code></pre><figcaption>Exemplo de Código com switch</figcaption></figure><h3 id="-object-literal">✅ Object Literal</h3><p>É uma maneira rápida e literal de criar um objeto, passando entre o par de chaves <code>{ }</code> a propriedade e o seu respectivo valor: <code>let obj = { name: "Rocketseat", &nbsp;bootcamp: "Go Stack"}</code></p><p>No código abaixo, temos um objeto literal <code>dayOfTheWeek</code> que possui os atributos de 0 a 6 e o seus respectivos valores em formato de <em>String</em> com os nomes dos dias da semana.</p><figure class="kg-card kg-code-card"><pre class=" language-jsx"><code class=" language-jsx"><span class="token keyword">const</span> dayOfTheWeek <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token number">0</span><span class="token operator">:</span> <span class="token string">"Sunday"</span><span class="token punctuation">,</span>
+  <span class="token number">1</span><span class="token operator">:</span> <span class="token string">"Monday"</span><span class="token punctuation">,</span>
+  <span class="token number">2</span><span class="token operator">:</span> <span class="token string">"Tuesday"</span><span class="token punctuation">,</span>
+  <span class="token number">3</span><span class="token operator">:</span> <span class="token string">"Wednesday"</span><span class="token punctuation">,</span>
+  <span class="token number">4</span><span class="token operator">:</span> <span class="token string">"Thursday"</span><span class="token punctuation">,</span>
+  <span class="token number">5</span><span class="token operator">:</span> <span class="token string">"Friday"</span><span class="token punctuation">,</span>
+  <span class="token number">6</span><span class="token operator">:</span> <span class="token string">"Saturday"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">What day of the week is today? </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>dayOfTheWeek<span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Resultado para o dia 16/09/2020:</span>
+<span class="token comment">// What day of the week is today? Wednesday</span>
+</code></pre><figcaption>Exemplo de Código com object literal</figcaption></figure><h3 id="-conclus-o">👊 Conclusão</h3><p>Mesmo escrevendo funcionalidade semelhantes, percebemos que o código com <strong>Object Literal</strong> possui menos linhas de código, tendo uma melhor legibilidade e não corremos o risco de esquecer algum <code>break</code>.</p><p>Existem vários casos de uso de como substituir o <code>switch</code> pelo <code>object literals</code>. Vamos deixar alguns links caso queira se aprofundar no assunto, e levar seu código para um próximo nível! 🚀</p><h3 id="-links">🔗 Links</h3><ul><li><a href="https://spin.atomicobject.com/2016/11/06/switch-statements-object-literals/">switch statements and object literals</a></li><li><a href="https://dev.to/lukyhenson/substitua-sua-instrucao-switch-e-varios-if-and-else-usando-object-literals-pt-br-4po9">substitua o switch e vários if and else usando object literals</a></li><li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/switch">mdn switch</a></li><li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Inicializador_Objeto">mdn object literal</a></li></ul><p>E aí, o que achou da nossa <strong>sugestão</strong>?</p><p>Espero que tenha <strong>curtido</strong>! 💜</p><p><em><strong>O aprendizado é contínuo e sempre haverá um próximo nível!</strong> 🚀</em></p><p>⠀</p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Marcadores</h3>
+                  <ul>
+                      <li>
+                        <a href="https://blog.rocketseat.com.br/tag/javascript/" title="javascript">javascript</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+          <section class="m-subscribe-section js-newsletter">
+            <div class="l-wrapper in-post">
+              <div class="m-subscribe-section__content">
+                <div class="m-subscribe-section__text">
+                  <h4 class="m-subscribe-section__title">Inscreva-se para a nossa lista de email</h4>
+                  <p class="m-subscribe-section__description">
+                    Receba nossos artigos mais novos diretamente na sua caixa de entrada.
+                  </p>
+                </div>
+                <div class="m-subscribe-section__form">
+                  
+<div class="m-subscribe-section__form">
+  <form data-members-form="subscribe" id="newsletter-form" class="m-subscribe-section__container">
+    <div class="m-subscribe__form">
+      <div class="pos-relative">
+        <label for="newsletter-input" class="sr-only">Seu email</label>
+        <input data-members-email="" id="newsletter-input" class="m-input in-subscribe-section" type="email" placeholder="Seu email" required="">
+      </div>
+      <button id="newsletter-button" class="m-button primary block" type="submit">Inscreva-se</button>
+    </div>
+    <div class="m-subscribe__success">
+      <header class="m-heading no-margin">
+        <img src="./Substituindo a instrução switch por Object Literal_files/success.png" alt="Success!" class="m-subscribe__success_icon">
+        <p class="m-heading__description in-newsletter-form">
+          Agora verifique sua caixa de entrada e clique no link para confirmar sua inscrição.
+        </p>
+      </header>
+    </div>
+    <p class="m-subscribe__invalid m-small-text">
+      Por favor insira um email válido
+    </p>
+    <p class="m-subscribe__error m-small-text">
+      Oops! Ocorreu um erro ao enviar o email, por favor tente mais tarde.
+    </p>
+  </form>
+</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://blog.rocketseat.com.br/author/thiago-marinho/" class="m-author-picture" aria-label="Thiago Marinho">
+                  <div style="background-image: url(https://blog.rocketseat.com.br/content/images/2021/03/profile-pic--4-.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://blog.rocketseat.com.br/author/thiago-marinho/">Thiago Marinho</a>
+              </h4>
+                <p class="m-author__bio">Dev Apaixonado por Tecnologia &amp; Educação!
+
+Evolua rápido como a tecnologia, aprendizado é contínuo e sempre haverá um próximo nível. Boost Yourself! 🚀</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://tgmarinho.com/" target="_blank" rel="noopener" aria-label="Website">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/@tgmarinho" target="_blank" rel="noopener" aria-label="Twitter">
+                      <span class="icon-twitter" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+            <section class="m-recommended">
+              <div class="l-wrapper in-recommended">
+                <h3 class="m-section-title in-recommended">Recomendado para você</h3>
+                <div class="m-recommended-articles">
+                  <div class="m-recommended-slider swiper js-recommended-slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-101a167bfa5131054" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                      
+    <div class="m-recommended-slider__item swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 421px;">
+  <article class="m-article-card  post tag-relay tag-graphql tag-nextjs tag-flow tag-apollo tag-reactjs tag-javascript">
+    <div class="m-article-card__picture">
+      <a href="https://blog.rocketseat.com.br/5-ferramentas-em-alta-react/" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="./Substituindo a instrução switch por Object Literal_files/5_ferramentas_em_alta_para_desenvolvedores_React.png" loading="lazy" alt="">
+      <a href="https://blog.rocketseat.com.br/author/diego/" class="m-article-card__author js-tooltip" aria-label="Diego Fernandes" data-tippy-content="Publicado por Diego Fernandes ">
+          <div style="background-image: url(/content/images/size/w100/2019/05/profile.png);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="https://blog.rocketseat.com.br/tag/relay/" class="m-article-card__tag">Relay</a>
+      <a href="https://blog.rocketseat.com.br/5-ferramentas-em-alta-react/" class="m-article-card__info-link" aria-label="5 ferramentas em alta para desenvolvedores React">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="5 ferramentas em alta para desenvolvedores React" style="">
+            5 ferramentas em alta para desenvolvedores React
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>há 4 anos</span>
+          <span>•</span>
+          <span>5 min de leitura</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item swiper-slide swiper-slide-next" role="group" aria-label="2 / 3" style="width: 421px;">
+  <article class="m-article-card  post tag-jamstack tag-arquitetura tag-javascript tag-api tag-markup featured">
+    <div class="m-article-card__picture">
+      <a href="https://blog.rocketseat.com.br/jamstack-geleia-de-javascript-api-e-markup/" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="./Substituindo a instrução switch por Object Literal_files/Rocketseat-JAMstack-blog.png" loading="lazy" alt="">
+      <a href="https://blog.rocketseat.com.br/author/felipe/" class="m-article-card__author js-tooltip" aria-label="Felipe Buzzi" data-tippy-content="Publicado por Felipe Buzzi ">
+          <div style="background-image: url(/content/images/size/w100/2021/12/254065244_4632493013499538_4893590733630240549_n.jpg);"></div>
+      </a>
+        <a href="https://blog.rocketseat.com.br/jamstack-geleia-de-javascript-api-e-markup/" class="m-article-card__featured js-tooltip" data-tippy-content="Em destaque" aria-label="Em destaque">
+          <span class="icon-star" aria-hidden="true"></span>
+        </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="https://blog.rocketseat.com.br/tag/jamstack/" class="m-article-card__tag">JAMstack</a>
+      <a href="https://blog.rocketseat.com.br/jamstack-geleia-de-javascript-api-e-markup/" class="m-article-card__info-link" aria-label="JAMstack: geleia de JavaScript, API e Markup">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="JAMstack: geleia de JavaScript, API e Markup" style="">
+            JAMstack: geleia de JavaScript, API e Markup
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>há 5 meses</span>
+          <span>•</span>
+          <span>2 min de leitura</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item swiper-slide" role="group" aria-label="3 / 3" style="width: 421px;">
+  <article class="m-article-card  post tag-nodejs tag-react-native tag-reactjs tag-javascript tag-vs-code">
+    <div class="m-article-card__picture">
+      <a href="https://blog.rocketseat.com.br/ambiente-desenvolvimento-javascript/" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="./Substituindo a instrução switch por Object Literal_files/ambiente-desenvolvimento-javascript.png" loading="lazy" alt="">
+      <a href="https://blog.rocketseat.com.br/author/diego/" class="m-article-card__author js-tooltip" aria-label="Diego Fernandes" data-tippy-content="Publicado por Diego Fernandes ">
+          <div style="background-image: url(/content/images/size/w100/2019/05/profile.png);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="https://blog.rocketseat.com.br/tag/nodejs/" class="m-article-card__tag">NodeJS</a>
+      <a href="https://blog.rocketseat.com.br/ambiente-desenvolvimento-javascript/" class="m-article-card__info-link" aria-label="Ambiente Javascript: Dicas, VSCode e terminal">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Ambiente Javascript: Dicas, VSCode e terminal" style="">
+            Ambiente Javascript: Dicas, VSCode e terminal
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>há 4 anos</span>
+          <span>•</span>
+          <span>4 min de leitura</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                    <button class="m-icon-button filled in-recommended-articles swiper-button-prev swiper-button-disabled swiper-button-lock" aria-label="Previous slide" disabled="" tabindex="-1" aria-controls="swiper-wrapper-101a167bfa5131054" aria-disabled="true">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button class="m-icon-button filled in-recommended-articles swiper-button-next swiper-button-disabled swiper-button-lock" aria-label="Next slide" disabled="" tabindex="-1" aria-controls="swiper-wrapper-101a167bfa5131054" aria-disabled="true">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                </div>
+              </div>
+            </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/rocketseat" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/rocketseat" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="https://blog.rocketseat.com.br/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Blog da Rocketseat © 2022</span>
+      <span>&nbsp; • &nbsp;</span>
+      <span>Publicado com <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="https://blog.rocketseat.com.br/assets/html/javascript.html?v=568a4d1e52" rel="jslicense">Informações de licença JavaScript</a>
+    </p>
+  </div>
+</footer>
+
+    <script defer="" src="./Substituindo a instrução switch por Object Literal_files/manifest.js.baixados"></script>
+    <script defer="" src="./Substituindo a instrução switch por Object Literal_files/content-api.min.js.baixados"></script>
+    <script defer="" src="./Substituindo a instrução switch por Object Literal_files/vendor.js.baixados"></script>
+    <script defer="" src="./Substituindo a instrução switch por Object Literal_files/app.js.baixados"></script>
+
+      <script defer="" src="./Substituindo a instrução switch por Object Literal_files/post.js.baixados"></script>
+
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9TJ6T4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<!-- Global site tag (gtag.js) - Google Ads: 811368325 -->
+<script async="" src="./Substituindo a instrução switch por Object Literal_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-811368325');
+</script>
+<script type="text/javascript" src="./Substituindo a instrução switch por Object Literal_files/prism.min.js.baixados"></script>
+<script type="text/javascript" src="./Substituindo a instrução switch por Object Literal_files/prism-css.min.js.baixados"></script>
+<script type="text/javascript" src="./Substituindo a instrução switch por Object Literal_files/prism-jsx.min.js.baixados"></script>
+<script type="text/javascript" src="./Substituindo a instrução switch por Object Literal_files/prism-javascript.min.js.baixados"></script>
+<script type="text/javascript" src="./Substituindo a instrução switch por Object Literal_files/prism-typescript.min.js.baixados"></script>
+  
+
+<div id="ghost-portal-root"><iframe class="gh-portal-triggerbtn-iframe" title="portal-trigger" frameborder="0" style="z-index: 3999998; position: fixed; bottom: 0px; right: 0px; width: 194px; max-width: 500px; height: 98px; animation: 250ms ease 0s 1 normal none running animation-bhegco; transition: opacity 0.3s ease 0s; overflow: hidden;" src="./Substituindo a instrução switch por Object Literal_files/saved_resource.html"></iframe></div></body></html>
